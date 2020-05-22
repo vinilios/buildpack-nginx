@@ -9,8 +9,10 @@ NGINX_VERSION="1.8.1"
 NGINX_TARBALL="nginx-${NGINX_VERSION}.tar.gz"
 PCRE_VERSION="8.40"
 PCRE_TARBALL="pcre-${PCRE_VERSION}.tar.gz"
+PCRE_SITE="https://ftp.pcre.org/pub/pcre/"
 ZLIB_VERSION="1.2.11"
 ZLIB_TARBALL="zlib-${ZLIB_VERSION}.tar.gz"
+
 
 # parse and derive params
 BUILD_DIR=$1
@@ -43,7 +45,7 @@ fi
 
 if [[ ! -d "${PCRE_TARBALL%.tar.gz}" ]]; then
   echo "-----> download and unzip pcre"
-  curl "ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/${PCRE_TARBALL}" -o "${PCRE_TARBALL}"
+  curl "${PCRE_SITE}${PCRE_TARBALL}" -o "${PCRE_TARBALL}"
   tar xzf "${PCRE_TARBALL}" && rm -f "${PCRE_TARBALL}"
 fi
 
